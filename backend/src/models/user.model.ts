@@ -14,7 +14,7 @@ export interface IUser extends Document {
     updatedAt: Date;
 
     // Methos
-    comparePassword(password: string): Promise<boolean>;
+    isPasswordCorrect(password: string): Promise<boolean>;
     generateAccessToken(): string;
     generateRefreshToken(): string;
 }
