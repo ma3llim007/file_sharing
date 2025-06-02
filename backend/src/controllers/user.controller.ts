@@ -15,12 +15,12 @@ const register = asyncHandler(async (req: Request<{}, {}, RegisterRequestBody>, 
     const { firstName, lastName, email, password } = req?.body;
     // Validate required fields
     if (!firstName?.trim() || !lastName?.trim() || !email?.trim() || !password?.trim()) {
-        throw new ApiError(422, "All fields are required: First Name, Last Name, Email, and Password.");
+        return res.status(422).json(new ApiError(422, "All fields are required: First Name, Last Name, Email, and Password."));
     }
     // Check if user exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-        throw new ApiError(409, "User already exists, please login or use a different email.");
+        return res.status(409).json(new ApiError(409, "User already exists, please login or use a different email."));
     }
 
     const user = await User.create({
