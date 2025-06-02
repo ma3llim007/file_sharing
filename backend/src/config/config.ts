@@ -12,8 +12,7 @@ const getEnvVar = (key: string, required = true): string => {
 
 export const config = {
     // MongoDB
-    MONGODB_URI: getEnvVar("MONGODB_URI"),
-    DB_NAME: getEnvVar("DB_NAME"),
+    MONGO_URI: getEnvVar("MONGO_URI"),
 
     // JWT
     ACCESS_TOKEN_SECRET: getEnvVar("ACCESS_TOKEN_SECRET"),
@@ -22,5 +21,5 @@ export const config = {
     REFRESH_TOKEN_EXPIRY: getEnvVar("REFRESH_TOKEN_EXPIRY"),
 
     // Server
-    PORT: getEnvVar("PORT", false) || "5000",
+    PORT: getEnvVar("PORT", false) || "8000",
 };
